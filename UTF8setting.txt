@@ -1,0 +1,19 @@
+show variables like '%character%'; //檢查狀態
+
+Database都設定UTF8-unicode-ci
+
+再到MYSQL的my.ini檔案
+
+找到[client]
+
+在下面加入
+
+default-character-set=utf8
+
+
+找到 [mysqld] 
+
+在下面加入
+
+character-set-server=utf8
+collation-server=utf8_general_ci
