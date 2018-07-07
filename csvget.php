@@ -40,7 +40,7 @@
 	$db = new PDO($dsn, 'root', '');
 	setlocale(LC_ALL,"zh_TW.UTF8");//設定存取語系
 	
-	$dbname="abc.csv";//想匯入的檔案
+	$dbname=$_POST['file'];//想匯入的檔案
 	
 	$fp=fopen($dbname,"r");
 	$size=filesize($dbname)+1;
