@@ -5,7 +5,7 @@
 <?php
 	echo'<a href="logout.php">登出</a><br><br>';
 	if($_SESSION['UserID']!=NULL){
-		echo'<a href="register.php">新增</a>	';
+		echo'<a href="csvget.php">檔案匯入</a>	';
 		echo'<a href="update.php">修改</a>	';
 		echo'<a href="delete.php">刪除</a>	<br><br>';
 		$dsn = "mysql:host=localhost;dbname=test";
