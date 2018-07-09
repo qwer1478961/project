@@ -12,7 +12,7 @@
 		if($pw===$row['Passwd']){
 			$_SESSION['UserID'] =$id;
 			echo"<span>登入成功</span>";
-			 echo '<meta http-equiv=REFRESH CONTENT=1;url=member.php>';
+			 echo '<meta http-equiv=REFRESH CONTENT=1;url=main.php>';
 		}
 		else{
 			echo"<span>密碼錯誤</span>";

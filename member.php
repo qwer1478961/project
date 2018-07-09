@@ -3,56 +3,34 @@
 <?php session_start(); ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php
-	echo'<a href="logout.php">登出</a><br><br>';
 	if($_SESSION['UserID']!=NULL){
+		echo "<form name=\"form\" method=\"post\" >";
+		
 		echo'<a href="csvget.php">檔案匯入</a>	';
 		echo'<a href="update.php">修改</a>	';
 		echo'<a href="delete.php">刪除</a>	<br><br>';
+		echo'<a href="main.php">返回</a><br><br>';
+		
+        echo "查詢學號：<input type=\"text\" name=\"id\"  /> <br>";
+        echo "<input type=\"submit\" name=\"button\" value=\"確認\" /><br><br>";
+        echo "</form>";
+		if($_POST['id']!=""){
+			$id=$_POST['id'];
 		$dsn = "mysql:host=localhost;dbname=test";
 		$db = new PDO($dsn, 'root', '');
-		$rs=$db->query("SELECT * FROM user_data");
-		echo "<table><tr>";
-		echo "</tr>";
-		echo "<td>";
-		echo '學號';
-		echo "</td>";
-		echo "<td>";
-		echo '密碼';
-		echo "</td>";
-		echo "<td>";
-		echo '班級';
-		echo "</td>";
-		echo "<td>";
-		echo '姓名';
-		echo "</td>";
-		echo "<td>";
-		echo '點數';
-		echo "</td>";
-		echo "</tr>";
-		$num = $rs->rowCount();
-		for($i=1;$i<=$num;$i++){
-			$rs=$db->query("SELECT * FROM user_data WHERE SN='$i'");
-			$row=$rs->fetch();
-			echo "</tr>";
-			echo "<td>";
-			echo $row['UserID'];
-			echo "</td>";
-			echo "<td>";
-			echo $row['Passwd'];
-			echo "</td>";
-			echo "<td>";
-			echo $row['Class'];
-			echo "</td>";
-			echo "<td>";
-			echo $row['Name'];
-			echo "</td>";
-			echo "<td>";
-			echo $row['Point'];
-			echo "</td>";
-			echo "</tr>";
+		$sql=$db->query("SELECT * FROM `user_data` WHERE UserID='$id'");
+		$row=$sql->fetch();
+		echo "座號: ".$row['SeatN']."<br>"."姓名: ".$row['Name']."<br>"."密碼: ".$row['Passwd']."<br>";
+		if($row['Admin']==2){
+			echo"權限: 管理員<br>";
 		}
-		echo "</table></tr>";
-		
+		else if($row['Admin']==1){
+			echo"權限: 老師<br>";
+		}
+		else{
+			echo"權限: 學生<br>";
+		}
+		}
 	}
 	else{
 		echo"您無權限觀看此頁";

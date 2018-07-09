@@ -1,7 +1,8 @@
 <?php
 	echo "<form name=\"form\" method=\"post\" >";
         echo "要匯入的檔案：<input type=\"text\" name=\"file\" /> <br>";
-        echo "<input type=\"submit\" name=\"button\" value=\"確認\" />";
+        echo "<input type=\"submit\" name=\"button\" value=\"確認\" /><br><br>";
+		echo'<a href="member.php">返回</a>	';
         echo "</form>";
 
 
@@ -44,13 +45,24 @@
 	
 	$fp=fopen($dbname,"r");
 	$size=filesize($dbname)+1;
-	$result=$db->query("SELECT * FROM user_data");
-	$num = $result->rowCount();
-	$num+=1;
+	
+	
 	while($temp=__fgetcsv($fp,$size,",")){
+		$result=$db->query("SELECT * FROM user_data");
+		$num = $result->rowCount();
+		$num+=1;
 		$sql=$db->query("SET NAMES UTF8");
-		$rs=$db->query("INSERT INTO user_data(SN,UserID,Passwd,Class,Name) 
-		VALUES('$num','$temp[0]','$temp[1]','$temp[2]','$temp[3]')");	
+		$rs=$db->query("INSERT INTO user_data(SN,UserID,Passwd,Class,Seatn,Name) 
+		VALUES('$num','$temp[0]','$temp[1]','$temp[2]','$temp[3]','$temp[4]')");	
+		
+	}
+	$row=$result->fetch();
+	if($row){
+		echo"上傳成功";
+		echo '<meta http-equiv=REFRESH CONTENT=1;url=member.php>';
+	}
+	else{
+		echo"上傳失敗";
 		
 	}
 	fclose($fp);
