@@ -1,0 +1,118 @@
+﻿-- phpMyAdmin SQL Dump
+-- version 4.8.1
+-- https://www.phpmyadmin.net/
+--
+-- 主機: 127.0.0.1
+-- 產生時間： 2019-02-24 15:04:56
+-- 伺服器版本: 10.1.33-MariaDB
+-- PHP 版本： 7.2.6
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- 資料庫： `test`
+--
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `event_record`
+--
+
+CREATE TABLE `event_record` (
+  `Date` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `MID` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `UID` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Item` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Point` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 資料表的匯出資料 `event_record`
+--
+
+INSERT INTO `event_record` (`Date`, `MID`, `UID`, `Item`, `Point`) VALUES
+('2018/07/09', '6305023', '', '表現優良', 15),
+('2018/07/09', '6305023', '6305023', '表現優良', 15),
+('2018/07/09', '6305023', '6305023', '表現優良', -15),
+('2018/07/09', '6305023', '6305023', '表現優良', 15),
+('2018/07/09', '6305023', '6305024', '表現優良', 15),
+('2018/07/09', '6305023', '1111111', '表現優良', 15),
+('2018/07/09', '6305023', '6305028', '表現優良', 15),
+('2018/07/09', '6305023', '6305029', '表現優良', 15),
+('2018/07/09', '6305023', '6305030', '表現優良', 15);
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `select_op`
+--
+
+CREATE TABLE `select_op` (
+  `Item` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 資料表的匯出資料 `select_op`
+--
+
+INSERT INTO `select_op` (`Item`) VALUES
+('表現優良'),
+('打掃認真');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `user_data`
+--
+
+CREATE TABLE `user_data` (
+  `SN` int(11) NOT NULL,
+  `UserID` varchar(7) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Passwd` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Class` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `SeatN` int(11) NOT NULL,
+  `Name` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Admin` int(11) NOT NULL DEFAULT '0',
+  `Point` int(11) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 資料表的匯出資料 `user_data`
+--
+
+INSERT INTO `user_data` (`SN`, `UserID`, `Passwd`, `Class`, `SeatN`, `Name`, `Admin`, `Point`) VALUES
+(1, '6305023', '123', '訊一真', 1, '黃瀚', 2, 98),
+(2, '6305024', '34484988', '訊一真', 2, '抖抖抖', 0, 114),
+(3, '1111111', '111', '訊一善', 3, '小名', 0, 15),
+(4, '6303033', '321', '訊一善', 4, 'john', 0, 55),
+(5, '6305037', '6565', '訊一真', 5, '號', 0, 77),
+(6, '6305025', '555', '訊一善', 6, '程', 0, 22),
+(7, '6305026', '666', '訊一真', 7, '永', 0, 88),
+(8, '6305027', '777', '訊一善', 8, '正', 0, 33),
+(9, '6305028', '123', '訊一善', 9, '德', 0, 102),
+(10, '6305029', '234', '訊一善', 10, '豪', 0, 82),
+(11, '6305030', '345', '訊一善', 11, '上', 0, 49),
+(12, '6305031', '456', '訊一善', 12, '愈', 0, 1),
+(13, '6305032', '567', '訊一善', 13, '和', 0, 78),
+(14, '6305033', '678', '訊一善', 14, '祥', 0, 97),
+(15, '6305034', '789', '訊一善', 15, '建', 0, 64),
+(16, '6305035', '987', '訊一善', 16, '均', 0, 44),
+(17, '6305036', '876', '訊一善', 17, '委', 0, 66),
+(18, '6305037', '765', '訊一善', 18, '保', 0, 18),
+(19, '6305038', '654', '訊一善', 19, '中', 0, 18),
+(20, '6305039', '543', '訊一善', 20, '其', 0, 38);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
